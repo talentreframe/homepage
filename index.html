@@ -70,14 +70,10 @@
       <div class="about-grid">
         <div class="about-photos">
           <div class="photo-placeholder">
-            <img src="images/nina-outdoor.jpg" alt="Nina Redel" />
+            <img src="images/nina-studio-2.jpg" alt="Nina Redel" />
           </div>
-          <div class="photo-placeholder">
-            <img src="images/nina-studio-1.jpg" alt="Nina Redel" />
-          </div>
-          <div class="photo-placeholder">
-            <img src="images/nina-casual.jpg" alt="Nina Redel" />
-          </div>
+          <div class="photo-placeholder photo-empty photo-empty--1"></div>
+          <div class="photo-placeholder photo-empty photo-empty--2"></div>
         </div>
         <div class="about-content">
           <div class="section-label">About</div>
@@ -265,7 +261,7 @@
   <!-- ── Contact ─────────────────────────────────────────────── -->
   <section id="contact">
     <div class="container">
-      <div class="contact-grid">
+      <div class="contact-grid contact-grid--simple">
         <div class="contact-left">
           <div class="contact-portrait">
             <img src="images/nina-studio-2.jpg" alt="Nina Redel" />
@@ -278,47 +274,16 @@
             Let's discuss how we can support your organization in scaling hiring
             and building a high-performance recruiting function.
           </p>
-          <a href="#contact" class="contact-book-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Book a Consultation
+        </div>
+        <div class="contact-actions">
+          <a class="contact-action-btn" id="contact-email-btn" href="#" data-u="nredel" data-d="talentreframe-partners.com">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <div>
+              <p class="contact-action-label">Send an Email</p>
+              <p class="contact-action-value" id="contact-email-text">&#110;&#114;&#101;&#100;&#101;&#108;&#64;&#116;&#97;&#108;&#101;&#110;&#116;&#114;&#101;&#102;&#114;&#97;&#109;&#101;&#45;&#112;&#97;&#114;&#116;&#110;&#101;&#114;&#115;&#46;&#99;&#111;&#109;</p>
+            </div>
           </a>
         </div>
-        <form class="contact-form" onsubmit="return false;">
-          <div class="form-row">
-            <div class="form-field">
-              <label>First Name <span class="req">*</span></label>
-              <input type="text" placeholder="Jane" required />
-            </div>
-            <div class="form-field">
-              <label>Last Name <span class="req">*</span></label>
-              <input type="text" placeholder="Doe" required />
-            </div>
-          </div>
-          <div class="form-field">
-            <label>Email Address <span class="req">*</span></label>
-            <input type="email" placeholder="jane@company.com" required />
-          </div>
-          <div class="form-field">
-            <label>Phone Number <span style="color:var(--text-muted);font-size:10px;">(incl. country code)</span></label>
-            <input type="tel" placeholder="+49 123 456 789" />
-          </div>
-          <div class="form-field">
-            <label>Company / Organization <span class="req">*</span></label>
-            <input type="text" placeholder="Your company" required />
-          </div>
-          <div class="form-field">
-            <label>How can we help you? <span class="req">*</span></label>
-            <textarea placeholder="Tell us about your current TA challenges and what you're looking to achieve..." required></textarea>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" id="gdpr" required />
-            <label class="form-check-label" for="gdpr">
-              I agree to the processing of my personal data in accordance with the
-              <a href="#">Privacy Policy</a> (GDPR). <span class="req">*</span>
-            </label>
-          </div>
-          <button type="submit" class="btn-submit">Send Message</button>
-        </form>
       </div>
     </div>
   </section>
@@ -328,8 +293,8 @@
     <div class="footer-logo">Talent<span>Reframe</span> Partners</div>
     <p class="footer-copy">© 2025 TalentReframe Partners. All rights reserved.</p>
     <ul class="footer-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Imprint</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+      <li><a href="imprint.html">Impressum</a></li>
       <li><a href="https://www.talentreframe-partners.com">talentreframe-partners.com</a></li>
     </ul>
   </footer>
@@ -353,6 +318,13 @@
           ? 'rgba(18, 30, 40, 0.97)'
           : 'rgba(30, 46, 60, 0.92)';
     });
+
+    // Assemble email link at runtime — keeps address out of raw HTML
+    const emailBtn = document.getElementById('contact-email-btn');
+    if (emailBtn) {
+      const addr = emailBtn.dataset.u + '@' + emailBtn.dataset.d;
+      emailBtn.href = 'mailto:' + addr;
+    }
   </script>
 </body>
 </html>
